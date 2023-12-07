@@ -1,9 +1,11 @@
 mod input;
 
 use self::input::read_file;
+use std::env;
 
 fn main() {
-    let lines : Vec<String> = read_file("sample2.txt");
+    let args : Vec<String> = env::args().collect();
+    let lines : Vec<String> = read_file(&args[1]);
 
     let mut sum : u32 = 0;
 
