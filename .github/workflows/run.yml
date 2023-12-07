@@ -1,4 +1,4 @@
-name: Test With Sample Data
+name: Run All
 
 on:
   push:
