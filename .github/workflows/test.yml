@@ -14,5 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test
-        run: bash test.sh
+      - name: Test with Sample data
+        run: bash .ci/test.sh
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get the results for the question
+        run: bash .ci/run.sh
