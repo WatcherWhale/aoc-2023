@@ -8,11 +8,14 @@ function run_test {
     RESULT="$(cargo run -- sample.txt 2> /dev/null)"
     ANSWER="$(cat sample-answer.txt)"
 
+    FAILED="0"
+
     if [ "$RESULT" = "$ANSWER" ];
     then
         echo "$PROJECT_CLEANED passed"
     else
         echo "$PROJECT_CLEANED failed, expected '$ANSWER' got '$RESULT'"
+        FAILED="1"
     fi
 
 
@@ -21,8 +24,15 @@ function run_test {
 
 
 PROJECTS="$(find . -maxdepth 2 -mindepth 2 -type d -name "aoc-d*" | sort)"
+EXIT_CODE="0"
 
 for PROJECT in $PROJECTS
 do
     run_test "$PROJECT"
+    if [ "$FAILED" = "1" ];
+    then
+        EXIT_CODE=1
+    fi
 done
+
+exit "$EXIT_CODE"

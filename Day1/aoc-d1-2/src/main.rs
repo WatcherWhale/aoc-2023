@@ -35,6 +35,5 @@ fn replace_word_digits(input: &str) -> String {
         replaced = replaced.replace(&num_str.to_string(), &num);
     }
 
-    println!("{}", replaced);
     replaced.to_string()
 }
